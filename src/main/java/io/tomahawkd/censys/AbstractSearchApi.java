@@ -1,0 +1,30 @@
+package io.tomahawkd.censys;
+
+import io.tomahawkd.censys.net.Response;
+
+import java.util.List;
+
+abstract class AbstractSearchApi extends AbstractService {
+
+	AbstractSearchApi(AccountService accountService) {
+		super(accountService.getToken());
+	}
+
+	Response search(String query, int page, List<String> fields, boolean flatten) {
+		throw new UnsupportedOperationException("Not implement yet");
+	}
+
+	Response view(String id) {
+		throw new UnsupportedOperationException("Not implement yet");
+	}
+
+	Response report(String query, String field, int buckets) {
+		throw new UnsupportedOperationException("Not implement yet");
+	}
+
+	// since i am not subscribing an enterprise account, have to leave it unimplemented _(:з」∠)_
+	Response data() {
+		throw new UnsupportedOperationException("Not implement yet");
+	}
+
+}
