@@ -1,8 +1,11 @@
 package io.tomahawkd.censys;
 
+import io.tomahawkd.censys.module.ipv4.QueryMessage;
+import io.tomahawkd.censys.module.ipv4.SearchMessage;
 import io.tomahawkd.censys.net.Response;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.IOException;
 import java.util.List;
 
 public class IpSearchApi extends AbstractSearchApi {
@@ -18,9 +21,15 @@ public class IpSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response search(String query, int page, List<String> fields, boolean flatten) {
+	Response<SearchMessage> search(String query, int page, List<String> fields) {
 		String url = constructURL("search", CENSYS_INDEX_IP);
-		return null;
+		try {
+			return postForClass(SearchMessage.class,
+					url, accountService.getToken(),
+					null, new QueryMessage(query, page, fields).buildJson());
+		} catch (IOException e) {
+			return null;
+		}
 	}
 
 	@Override
