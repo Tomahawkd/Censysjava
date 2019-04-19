@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SearchResultMessage {
 
-	public static GsonBuilder registerConverter(GsonBuilder builder) {
+	static GsonBuilder registerConverter(GsonBuilder builder) {
 		return ProtocolMessage.registerConverter(builder);
 	}
 
