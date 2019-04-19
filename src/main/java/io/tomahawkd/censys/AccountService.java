@@ -3,6 +3,9 @@ package io.tomahawkd.censys;
 import io.tomahawkd.censys.module.account.AccountMessage;
 import io.tomahawkd.censys.net.Response;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
 class AccountService extends AbstractService {
 
 	private static final String CENSYS_INDEX_ACCOUNT = "account";
@@ -14,7 +17,9 @@ class AccountService extends AbstractService {
 	}
 
 	static AccountService acquireToken(String uid, String secret) {
-		return new AccountService(uid + ":" + secret);
+		String token = uid + ":" + secret;
+		String tokenEncoded = Base64.getEncoder().encodeToString(token.getBytes(StandardCharsets.UTF_8));
+		return new AccountService(tokenEncoded);
 	}
 
 	AccountMessage status() {

@@ -14,7 +14,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.Map;
 
 public class Response<ExpectMessage extends Message> {
@@ -99,8 +98,7 @@ public class Response<ExpectMessage extends Message> {
 		}
 
 		if (token != null) {
-			String tokenEncoded = Base64.getEncoder().encodeToString(token.getBytes(StandardCharsets.UTF_8));
-			conn.addRequestProperty("Authorization", "Basic " + tokenEncoded);
+			conn.addRequestProperty("Authorization", "Basic " + token);
 		}
 		conn.setConnectTimeout(2000);
 		conn.setReadTimeout(2000);
