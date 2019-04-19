@@ -6,8 +6,19 @@ import java.util.List;
 
 abstract class AbstractSearchApi extends AbstractService {
 
+	protected final AccountService accountService;
+
+	AbstractSearchApi() {
+		this(AccountService.anonymous());
+	}
+
+	AbstractSearchApi(String uid, String secret) {
+		this(AccountService.acquireToken(uid, secret));
+	}
+
 	AbstractSearchApi(AccountService accountService) {
-		super(accountService.getToken());
+		super();
+		this.accountService = accountService;
 	}
 
 	Response search(String query, int page, List<String> fields, boolean flatten) {

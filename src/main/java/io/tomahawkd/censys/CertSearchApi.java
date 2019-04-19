@@ -8,8 +8,12 @@ public class CertSearchApi extends AbstractSearchApi {
 
 	private static final String CENSYS_INDEX_CERT = "certificates";
 
+	public CertSearchApi() {
+		super();
+	}
+
 	public CertSearchApi(String uid, String secret) {
-		super(AccountService.acquireToken(uid, secret));
+		super(uid, secret);
 	}
 
 	@Override
