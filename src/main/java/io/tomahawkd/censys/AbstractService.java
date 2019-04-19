@@ -10,12 +10,6 @@ abstract class AbstractService {
 
 	private static final String api_url = "https://censys.io/api/v1";
 
-	private String token;
-
-	AbstractService(String token) {
-		this.token = token;
-	}
-
 	protected String constructURL(String endpoint, String index) {
 		if (endpoint.isEmpty() && index.isEmpty()) return api_url;
 		else if (index.isEmpty()) return api_url + "/" + endpoint;
@@ -33,9 +27,5 @@ abstract class AbstractService {
 	                                      Map<String, String> param,
 	                                      String content) throws IOException {
 		return Response.executeWithAuthForClass(clazz, "POST", url, token, param, content);
-	}
-
-	protected final String getToken() {
-		return token;
 	}
 }
