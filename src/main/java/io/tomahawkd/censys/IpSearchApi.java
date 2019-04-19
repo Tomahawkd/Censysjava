@@ -15,13 +15,13 @@ public class IpSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	public Response search(String query, int page, List<String> fields, boolean flatten) {
+	Response search(String query, int page, List<String> fields, boolean flatten) {
 		String url = constructURL("search", CENSYS_INDEX_IP);
 		return null;
 	}
 
 	@Override
-	public @Nullable Response view(String id) {
+	@Nullable Response view(String id) {
 		checkId(id);
 
 		String url = constructURL("view", CENSYS_INDEX_IP) + "/" + id;
@@ -36,7 +36,7 @@ public class IpSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	public Response report(String query, String field, int buckets) {
+	Response report(String query, String field, int buckets) {
 		return null;
 	}
 

@@ -13,17 +13,17 @@ public class WebsiteSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	public Response search(String query, int page, List<String> fields, boolean flatten) {
+	Response search(String query, int page, List<String> fields, boolean flatten) {
 		return null;
 	}
 
 	@Override
-	public Response view(String id) {
+	Response view(String id) {
 		return null;
 	}
 
 	@Override
-	public Response report(String query, String field, int buckets) {
+	Response report(String query, String field, int buckets) {
 		return null;
 	}
 }
