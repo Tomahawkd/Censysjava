@@ -88,6 +88,11 @@ public class Response<ExpectMessage extends Message> {
 
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod(method);
+
+		if (token != null) {
+			conn.addRequestProperty("Authorization", "Basic " + token);
+		}
+
 		if (method.equals("POST")) {
 			conn.setDoOutput(true);
 
@@ -95,10 +100,6 @@ public class Response<ExpectMessage extends Message> {
 				byte[] input = content.getBytes(StandardCharsets.UTF_8);
 				os.write(input, 0, input.length);
 			}
-		}
-
-		if (token != null) {
-			conn.addRequestProperty("Authorization", "Basic " + token);
 		}
 		conn.setConnectTimeout(2000);
 		conn.setReadTimeout(2000);

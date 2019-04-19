@@ -29,7 +29,8 @@ public class IpSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	@Nullable Response view(String id) {
+	@Nullable
+	Response view(String id) {
 		checkId(id);
 
 		String url = constructURL("view", CENSYS_INDEX_IP) + "/" + id;
