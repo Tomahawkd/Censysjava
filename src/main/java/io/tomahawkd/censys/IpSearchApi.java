@@ -9,8 +9,8 @@ public class IpSearchApi extends AbstractSearchApi {
 
 	private static final String CENSYS_INDEX_IP = "ipv4";
 
-	IpSearchApi(AccountService accountService) {
-		super(accountService);
+	public IpSearchApi(String uid, String secret) {
+		super(AccountService.acquireToken(uid, secret));
 	}
 
 	@Override

@@ -8,8 +8,8 @@ public class WebsiteSearchApi extends AbstractSearchApi {
 
 	private static final String CENSYS_INDEX_WEBSITE = "websites";
 
-	WebsiteSearchApi(AccountService accountService) {
-		super(accountService);
+	public WebsiteSearchApi(String uid, String secret) {
+		super(AccountService.acquireToken(uid, secret));
 	}
 
 	@Override
