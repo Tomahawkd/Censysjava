@@ -3,7 +3,6 @@ package io.tomahawkd.censys;
 import io.tomahawkd.censys.net.Response;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.IOException;
 import java.util.List;
 
 public class IpSearchApi extends AbstractSearchApi {
