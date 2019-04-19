@@ -17,7 +17,7 @@ abstract class AbstractSearchApi extends AbstractService {
 		this.accountService = accountService;
 	}
 
-	Response search(String query, int page, List<String> fields, boolean flatten) {
+	Response search(String query, int page, List<String> fields) {
 		throw new UnsupportedOperationException("Not implement yet");
 	}
 

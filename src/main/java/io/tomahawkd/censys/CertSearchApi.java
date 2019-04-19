@@ -13,7 +13,7 @@ public class CertSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response search(String query, int page, List<String> fields, boolean flatten) {
+	Response search(String query, int page, List<String> fields) {
 		return null;
 	}
 
