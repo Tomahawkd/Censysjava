@@ -10,8 +10,6 @@ class AccountService extends AbstractService {
 
 	private static final String CENSYS_INDEX_ACCOUNT = "account";
 
-	private String token;
-
 	private AccountService(String token) {
 		super(token);
 	}
@@ -24,7 +22,7 @@ class AccountService extends AbstractService {
 
 	AccountMessage status() {
 		Response<AccountMessage> r =  Response.executeWithStatusCheckForClass(AccountMessage.class,
-				"GET", constructURL(CENSYS_INDEX_ACCOUNT, ""), token, null, null);
+				"GET", constructURL(CENSYS_INDEX_ACCOUNT, ""), getToken(), null, null);
 
 		if (r.isError()) {
 			System.out.println(r.getErrorMessage());
