@@ -8,10 +8,6 @@ abstract class AbstractSearchApi extends AbstractService {
 
 	protected final AccountService accountService;
 
-	AbstractSearchApi() {
-		this(AccountService.anonymous());
-	}
-
 	AbstractSearchApi(String uid, String secret) {
 		this(AccountService.acquireToken(uid, secret));
 	}

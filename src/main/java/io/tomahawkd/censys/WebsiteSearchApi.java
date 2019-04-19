@@ -8,10 +8,6 @@ public class WebsiteSearchApi extends AbstractSearchApi {
 
 	private static final String CENSYS_INDEX_WEBSITE = "websites";
 
-	public WebsiteSearchApi() {
-		super();
-	}
-
 	public WebsiteSearchApi(String uid, String secret) {
 		super(uid, secret);
 	}

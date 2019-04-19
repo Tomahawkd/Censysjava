@@ -22,10 +22,6 @@ class AccountService extends AbstractService {
 		this.token = token;
 	}
 
-	public static AccountService anonymous() {
-		return new AccountService();
-	}
-
 	public static AccountService acquireToken(String uid, String secret) {
 		String token = uid + ":" + secret;
 		String tokenEncoded = Base64.getEncoder().encodeToString(token.getBytes(StandardCharsets.UTF_8));

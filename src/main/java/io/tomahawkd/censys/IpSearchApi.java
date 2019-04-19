@@ -12,10 +12,6 @@ public class IpSearchApi extends AbstractSearchApi {
 
 	private static final String CENSYS_INDEX_IP = "ipv4";
 
-	public IpSearchApi() {
-		super();
-	}
-
 	public IpSearchApi(String uid, String secret) {
 		super(uid, secret);
 	}
