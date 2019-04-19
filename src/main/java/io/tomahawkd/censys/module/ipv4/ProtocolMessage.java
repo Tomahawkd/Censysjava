@@ -8,7 +8,7 @@ import java.lang.reflect.Type;
 
 public class ProtocolMessage extends AbstractMessage {
 
-	public static GsonBuilder registerConverter(GsonBuilder builder) {
+	static GsonBuilder registerConverter(GsonBuilder builder) {
 		return builder.registerTypeAdapter(ProtocolMessage.class, new ProtocolConverter());
 	}
 
