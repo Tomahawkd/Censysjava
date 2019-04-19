@@ -16,16 +16,18 @@ abstract class AbstractService {
 		return api_url + "/" + endpoint + "/" + index;
 	}
 
-	protected final Response getForClass(Class<? extends Message> clazz,
-	                                     String url,
-	                                     Map<String, String> param) throws IOException {
+	protected final <T extends Message> Response<T> getForClass(Class<T> clazz,
+	                                                            String url,
+	                                                            String token,
+	                                                            Map<String, String> param) throws IOException {
 		return Response.executeWithAuthForClass(clazz, "GET", url, token, param, "");
 	}
 
-	protected final Response postForClass(Class<? extends Message> clazz,
-	                                      String url,
-	                                      Map<String, String> param,
-	                                      String content) throws IOException {
+	protected final <T extends Message> Response<T> postForClass(Class<T> clazz,
+	                                                             String url,
+	                                                             String token,
+	                                                             Map<String, String> param,
+	                                                             String content) throws IOException {
 		return Response.executeWithAuthForClass(clazz, "POST", url, token, param, content);
 	}
 }
