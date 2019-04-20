@@ -3,6 +3,7 @@ package io.tomahawkd.censys;
 import io.tomahawkd.censys.module.account.AccountMessage;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
@@ -28,15 +29,20 @@ class AccountService extends AbstractService {
 	}
 
 	AccountMessage status() {
-		Response<AccountMessage> r = Response.executeWithStatusCheckForClass(AccountMessage.class,
-				"GET", constructURL(CENSYS_INDEX_ACCOUNT, ""), token, null, null);
+		try {
+			Response<AccountMessage> r = getForClass(AccountMessage.class,
+					constructURL(CENSYS_INDEX_ACCOUNT, ""), token, null);
 
-		// TODO handle error
-		if (r.isError()) {
-			System.out.println(r.getErrorMessage());
-			throw new IllegalStateException(r.getContentMessage());
-		} else {
-			return r.getExpectMessage();
+			// TODO handle error
+			if (r.isError()) {
+				System.out.println(r.getErrorMessage());
+				throw new IllegalStateException(r.getContentMessage());
+			} else {
+				return r.getExpectMessage();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
 		}
 	}
 
