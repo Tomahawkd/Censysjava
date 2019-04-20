@@ -1,5 +1,9 @@
 package io.tomahawkd.censys;
 
+import io.tomahawkd.censys.module.QueryMessage;
+import io.tomahawkd.censys.module.certificates.CertSearchMessage;
+
+import java.io.IOException;
 import java.util.List;
 
 public class CertSearchApi extends AbstractSearchApi {
@@ -11,8 +15,15 @@ public class CertSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response search(String query, int page, List<String> fields) {
-		return null;
+	Response<CertSearchMessage> search(String query, int page, List<String> fields) {
+		String url = constructURL("search", CENSYS_INDEX_CERT);
+		try {
+			return postForClass(CertSearchMessage.class,
+					url, accountService.getToken(),
+					null, new QueryMessage(query, page, fields).buildJson());
+		} catch (IOException e) {
+			return null;
+		}
 	}
 
 	@Override
