@@ -1,7 +1,5 @@
 package io.tomahawkd.censys;
 
-import io.tomahawkd.censys.net.Response;
-
 import java.util.List;
 
 abstract class AbstractSearchApi extends AbstractService {

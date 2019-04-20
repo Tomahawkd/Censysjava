@@ -1,7 +1,6 @@
 package io.tomahawkd.censys;
 
 import io.tomahawkd.censys.module.account.AccountMessage;
-import io.tomahawkd.censys.net.Response;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.charset.StandardCharsets;

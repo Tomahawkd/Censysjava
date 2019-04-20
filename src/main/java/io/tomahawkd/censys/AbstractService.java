@@ -1,7 +1,6 @@
 package io.tomahawkd.censys;
 
 import io.tomahawkd.censys.module.Message;
-import io.tomahawkd.censys.net.Response;
 
 import java.io.IOException;
 import java.util.Map;
