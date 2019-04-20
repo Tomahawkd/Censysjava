@@ -1,4 +1,4 @@
-package io.tomahawkd.censys.net;
+package io.tomahawkd.censys;
 
 import io.tomahawkd.censys.module.Message;
 import io.tomahawkd.censys.module.errors.AuthenticationErrorMessage;
@@ -19,19 +19,17 @@ import java.util.Map;
 public class Response<ExpectMessage extends Message> {
 
 	private Status status;
-	private ResponseMessage message;
 	private Class<ExpectMessage> expectMessageClass;
+	private Message message;
 
 	private Response(int status, String result, Class<ExpectMessage> clazz) {
 		this.status = Status.fromCode(status);
-		boolean isError = false;
-		if (this.status != Status.OK) isError = true;
 		this.expectMessageClass = clazz;
 
 		try {
 
 			Message contentMessage;
-			if (isError) {
+			if (this.status != Status.OK) {
 				if (this.status == Status.FORBIDDEN) {
 					contentMessage = (Message) AuthenticationErrorMessage.class.getMethod("parse", String.class)
 							.invoke(null, result);
@@ -44,7 +42,7 @@ public class Response<ExpectMessage extends Message> {
 						.invoke(null, result);
 			}
 
-			this.message = new ResponseMessage(contentMessage, isError);
+			this.message = contentMessage;
 
 		} catch (IllegalAccessException |
 				InvocationTargetException |
@@ -54,22 +52,7 @@ public class Response<ExpectMessage extends Message> {
 		}
 	}
 
-	public static <T extends Message> Response<T>
-	executeWithStatusCheckForClass(Class<T> clazz,
-	                               String method,
-	                               String target_url,
-	                               @Nullable String token,
-	                               @Nullable Map<String, String> param,
-	                               String content) {
-
-		try {
-			return Response.executeWithAuthForClass(clazz, method, target_url, token, param, content);
-		} catch (IOException e) {
-			throw new IllegalStateException(e.getMessage());
-		}
-	}
-
-	public static <T extends Message> Response<T>
+	static <T extends Message> Response<T>
 	executeWithAuthForClass(Class<T> clazz,
 	                        String method,
 	                        String target_url,
@@ -133,19 +116,26 @@ public class Response<ExpectMessage extends Message> {
 	}
 
 	public ExpectMessage getExpectMessage() {
-		return message.getExpectMessage(expectMessageClass);
+		if (isError()) return null;
+
+		try {
+			return this.expectMessageClass.cast(message);
+		} catch (ClassCastException e) {
+			return null;
+		}
 	}
 
 	public ErrorMessage getErrorMessage() {
-		return message.getErrorMessage();
+		if (isError()) return (ErrorMessage) message;
+		else return null;
 	}
 
 	public boolean isError() {
-		return message.isError();
+		return this.status != Status.OK;
 	}
 
 	public String getContentMessage() {
-		return message.getContentMessage();
+		return message.getMessage();
 	}
 
 	@Override
