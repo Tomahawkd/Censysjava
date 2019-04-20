@@ -1,9 +1,9 @@
-package io.tomahawkd.censys.module.ipv4;
+package io.tomahawkd.censys.module;
 
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 
-class MetaDataMessage extends AbstractMessage {
+public class MetaDataMessage extends AbstractMessage {
 
 	private int count;
 	private String query;

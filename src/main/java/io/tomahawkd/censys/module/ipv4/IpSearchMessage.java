@@ -2,6 +2,7 @@ package io.tomahawkd.censys.module.ipv4;
 
 import com.google.gson.GsonBuilder;
 import io.tomahawkd.censys.module.AbstractMessage;
+import io.tomahawkd.censys.module.MetaDataMessage;
 
 import java.util.List;
 
