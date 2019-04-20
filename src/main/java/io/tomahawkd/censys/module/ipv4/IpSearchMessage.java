@@ -5,22 +5,22 @@ import io.tomahawkd.censys.module.AbstractMessage;
 
 import java.util.List;
 
-public class SearchMessage extends AbstractMessage {
+public class IpSearchMessage extends AbstractMessage {
 
-	public static SearchMessage parse(String data) {
-		return SearchResultMessage.registerConverter(new GsonBuilder())
-				.create().fromJson(data, SearchMessage.class);
+	public static IpSearchMessage parse(String data) {
+		return IpSearchResultMessage.registerConverter(new GsonBuilder())
+				.create().fromJson(data, IpSearchMessage.class);
 	}
 
 	private String status;
-	private List<SearchResultMessage> results;
+	private List<IpSearchResultMessage> results;
 	private MetaDataMessage metadata;
 
 	public String getStatus() {
 		return status;
 	}
 
-	public List<SearchResultMessage> getResults() {
+	public List<IpSearchResultMessage> getResults() {
 		return results;
 	}
 
@@ -30,7 +30,7 @@ public class SearchMessage extends AbstractMessage {
 
 	@Override
 	public String toString() {
-		return SearchResultMessage.registerConverter(new GsonBuilder())
+		return IpSearchResultMessage.registerConverter(new GsonBuilder())
 				.create().toJson(this);
 	}
 }
