@@ -1,9 +1,7 @@
-package io.tomahawkd.censys.module.ipv4;
+package io.tomahawkd.censys.module;
 
 import com.google.gson.GsonBuilder;
-import io.tomahawkd.censys.module.AbstractMessage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class QueryMessage extends AbstractMessage {
