@@ -53,19 +53,4 @@ public class MetaDataMessage extends AbstractMessage {
 	public String getVersion() {
 		return version;
 	}
-
-	@Override
-	public String toString() {
-		return "MetaDataMessage{" +
-				"description='" + description + '\'' +
-				", deviceType='" + deviceType + '\'' +
-				", manufacturer='" + manufacturer + '\'' +
-				", os='" + os + '\'' +
-				", osDescription='" + osDescription + '\'' +
-				", osVersion='" + osVersion + '\'' +
-				", product='" + product + '\'' +
-				", revision='" + revision + '\'' +
-				", version='" + version + '\'' +
-				'}';
-	}
 }

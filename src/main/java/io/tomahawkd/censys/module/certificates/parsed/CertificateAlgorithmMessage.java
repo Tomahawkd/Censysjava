@@ -1,6 +1,5 @@
 package io.tomahawkd.censys.module.certificates.parsed;
 
-import com.google.gson.GsonBuilder;
 import io.tomahawkd.censys.module.AbstractMessage;
 
 public class CertificateAlgorithmMessage extends AbstractMessage {
@@ -14,10 +13,5 @@ public class CertificateAlgorithmMessage extends AbstractMessage {
 
 	public String getName() {
 		return name;
-	}
-
-	@Override
-	public String toString() {
-		return new GsonBuilder().create().toJson(this);
 	}
 }

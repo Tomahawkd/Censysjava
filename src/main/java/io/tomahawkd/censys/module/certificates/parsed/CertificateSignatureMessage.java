@@ -28,14 +28,4 @@ public class CertificateSignatureMessage extends AbstractMessage {
 	public String getValue() {
 		return value;
 	}
-
-	@Override
-	public String toString() {
-		return "CertificateSignatureMessage{" +
-				"selfSigned=" + selfSigned +
-				", valid=" + valid +
-				", signatureAlgorithm=" + signatureAlgorithm +
-				", value='" + value + '\'' +
-				'}';
-	}
 }

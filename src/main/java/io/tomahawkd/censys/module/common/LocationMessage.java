@@ -64,21 +64,4 @@ public class LocationMessage extends AbstractMessage {
 	public String getTimezone() {
 		return timezone;
 	}
-
-	@Override
-	public String toString() {
-		return "LocationMessage{" +
-				"city='" + city + '\'' +
-				", continent='" + continent + '\'' +
-				", country='" + country + '\'' +
-				", countryCode='" + countryCode + '\'' +
-				", latitude=" + latitude +
-				", longitude=" + longitude +
-				", postalCode='" + postalCode + '\'' +
-				", province='" + province + '\'' +
-				", registeredCountry='" + registeredCountry + '\'' +
-				", registeredCountryCode='" + registeredCountryCode + '\'' +
-				", timezone='" + timezone + '\'' +
-				'}';
-	}
 }

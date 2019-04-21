@@ -1,21 +1,17 @@
 package io.tomahawkd.censys.module.certificates.parsed.extension;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import io.tomahawkd.censys.module.AbstractMessage;
+import io.tomahawkd.censys.module.util.TypeAdapterRegister;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExtendedKeyUsageExtensionMessage extends AbstractMessage {
-
-	static GsonBuilder registerTypeAdapter(GsonBuilder builder) {
-		return builder.registerTypeAdapter(ExtendedKeyUsageExtensionMessage.class, new KeyUsageTypeAdapter());
-	}
 
 	private List<String> keyUsages = new ArrayList<>();
 	private List<String> unknown = new ArrayList<>();
@@ -33,12 +29,12 @@ public class ExtendedKeyUsageExtensionMessage extends AbstractMessage {
 		return value;
 	}
 
-	@Override
-	public String toString() {
-		return registerTypeAdapter(new GsonBuilder()).create().toJson(this);
-	}
-
 	private static class KeyUsageTypeAdapter extends TypeAdapter<ExtendedKeyUsageExtensionMessage> {
+
+		static {
+			TypeAdapterRegister.getInstance().register(ExtendedKeyUsageExtensionMessage.class,
+					new KeyUsageTypeAdapter());
+		}
 
 		@Override
 		public void write(JsonWriter out, ExtendedKeyUsageExtensionMessage value) throws IOException {

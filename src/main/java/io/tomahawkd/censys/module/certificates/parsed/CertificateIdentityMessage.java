@@ -1,6 +1,5 @@
 package io.tomahawkd.censys.module.certificates.parsed;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 
@@ -98,10 +97,5 @@ public class CertificateIdentityMessage extends AbstractMessage {
 
 	public List<String> getSurname() {
 		return surname;
-	}
-
-	@Override
-	public String toString() {
-		return new GsonBuilder().create().toJson(this);
 	}
 }

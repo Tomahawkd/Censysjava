@@ -1,16 +1,10 @@
 package io.tomahawkd.censys.module.certificates.parsed;
 
-import com.google.gson.GsonBuilder;
 import io.tomahawkd.censys.module.AbstractMessage;
-import io.tomahawkd.censys.module.util.DateConverter;
 
 import java.util.Date;
 
 public class CertificateValidityMessage extends AbstractMessage {
-
-	static GsonBuilder registerConverter(GsonBuilder builder) {
-		return builder.registerTypeAdapter(Date.class, new DateConverter());
-	}
 
 	private Date start;
 	private Date end;
@@ -26,10 +20,5 @@ public class CertificateValidityMessage extends AbstractMessage {
 
 	public long getLength() {
 		return length;
-	}
-
-	@Override
-	public String toString() {
-		return CertificateValidityMessage.registerConverter(new GsonBuilder()).create().toJson(this);
 	}
 }

@@ -1,18 +1,11 @@
 package io.tomahawkd.censys.module.certificates.parsed.extension;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 
 import java.util.List;
 
 public class CertificateExtensionMessage extends AbstractMessage {
-
-	public static GsonBuilder registerConverter(GsonBuilder builder) {
-		builder = KeyUsageExtensionMessage.registerTypeAdapter(builder);
-		builder = SignedCertificateTimestampExtensionMessage.registerConverter(builder);
-		return ExtendedKeyUsageExtensionMessage.registerTypeAdapter(builder);
-	}
 
 	@SerializedName("authority_info_access")
 	private AuthorityInfoAccessExtensionMessage authorityInfoAccess;
@@ -91,10 +84,5 @@ public class CertificateExtensionMessage extends AbstractMessage {
 
 	public String getSubjectKeyId() {
 		return subjectKeyId;
-	}
-
-	@Override
-	public String toString() {
-		return registerConverter(new GsonBuilder()).create().toJson(this);
 	}
 }

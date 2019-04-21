@@ -17,11 +17,4 @@ public class WebsiteMessage extends AbstractMessage {
 		return rank;
 	}
 
-	@Override
-	public String toString() {
-		return "{" +
-				"domain='" + domain + '\'' +
-				", rank=" + rank +
-				'}';
-	}
 }

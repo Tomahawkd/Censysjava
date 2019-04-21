@@ -1,6 +1,5 @@
 package io.tomahawkd.censys.module.certificates.parsed;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 import io.tomahawkd.censys.module.certificates.parsed.extension.CertificateExtensionMessage;
@@ -9,12 +8,6 @@ import io.tomahawkd.censys.module.certificates.parsed.extension.CertificateUnkno
 import java.util.List;
 
 public class ParsedCertificateMessage extends AbstractMessage {
-
-	public static GsonBuilder registerConverter(GsonBuilder builder) {
-		builder = CertificateValidityMessage.registerConverter(builder);
-		builder = CertificateExtensionMessage.registerConverter(builder);
-		return CertificateSubjectKeyInfoMessage.registerConverter(builder);
-	}
 
 	private CertificateExtensionMessage extension;
 	@SerializedName("fingerprint_md5")
@@ -133,32 +126,5 @@ public class ParsedCertificateMessage extends AbstractMessage {
 
 	public short getVersion() {
 		return version;
-	}
-
-	@Override
-	public String toString() {
-		return "ParsedCertificateMessage{" +
-				"extension=" + extension +
-				", fingerprintMD5='" + fingerprintMD5 + '\'' +
-				", fingerprintSHA1='" + fingerprintSHA1 + '\'' +
-				", fingerprintSHA256='" + fingerprintSHA256 + '\'' +
-				", issuer=" + issuer +
-				", issuerDN='" + issuerDN + '\'' +
-				", names=" + names +
-				", redacted=" + redacted +
-				", serialNumber='" + serialNumber + '\'' +
-				", signature=" + signature +
-				", signatureAlgorithm=" + signatureAlgorithm +
-				", fingerprintSPKISubject='" + fingerprintSPKISubject + '\'' +
-				", subject=" + subject +
-				", subjectDN='" + subjectDN + '\'' +
-				", subjectKeyInfo=" + subjectKeyInfo +
-				", fingerprintTBS='" + fingerprintTBS + '\'' +
-				", fingerprintTBSNoCT='" + fingerprintTBSNoCT + '\'' +
-				", unknownExtensions=" + unknownExtensions +
-				", validationLevel='" + validationLevel + '\'' +
-				", validity=" + validity +
-				", version=" + version +
-				'}';
 	}
 }

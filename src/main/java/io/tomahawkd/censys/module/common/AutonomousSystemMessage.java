@@ -48,18 +48,4 @@ public class AutonomousSystemMessage extends AbstractMessage {
 	public String getRoutedPrefix() {
 		return routedPrefix;
 	}
-
-	@Override
-	public String toString() {
-		return "AutonomousSystemMessage{" +
-				"asn=" + asn +
-				", countryCode='" + countryCode + '\'' +
-				", description='" + description + '\'' +
-				", name='" + name + '\'' +
-				", organization='" + organization + '\'' +
-				", path=" + path +
-				", rir='" + rir + '\'' +
-				", routedPrefix='" + routedPrefix + '\'' +
-				'}';
-	}
 }

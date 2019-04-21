@@ -1,6 +1,5 @@
 package io.tomahawkd.censys.module.certificates.parsed.extension;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 
@@ -25,11 +24,6 @@ public class CertificatePoliciesExtensionMessage extends AbstractMessage {
 		return userNotices;
 	}
 
-	@Override
-	public String toString() {
-		return new GsonBuilder().create().toJson(this);
-	}
-
 	public class UserNotice {
 
 		@SerializedName("explicit_text")
@@ -39,11 +33,5 @@ public class CertificatePoliciesExtensionMessage extends AbstractMessage {
 			return explicitText;
 		}
 
-		@Override
-		public String toString() {
-			return "UserNotice{" +
-					"explicitText='" + explicitText + '\'' +
-					'}';
-		}
 	}
 }

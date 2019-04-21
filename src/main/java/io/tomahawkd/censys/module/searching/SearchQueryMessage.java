@@ -1,6 +1,5 @@
 package io.tomahawkd.censys.module.searching;
 
-import com.google.gson.GsonBuilder;
 import io.tomahawkd.censys.module.AbstractMessage;
 
 import java.util.List;
@@ -28,14 +27,5 @@ public class SearchQueryMessage extends AbstractMessage {
 
 	public List<String> getFields() {
 		return fields;
-	}
-
-	public String buildJson() {
-		return new GsonBuilder().create().toJson(this);
-	}
-
-	@Override
-	public String toString() {
-		return buildJson();
 	}
 }

@@ -24,14 +24,4 @@ public class IpAddressMessage extends AbstractMessage {
 	public String getMask() {
 		return mask;
 	}
-
-	@Override
-	public String toString() {
-		return "IpAddressMessage{" +
-				"begin='" + begin + '\'' +
-				", cidr='" + cidr + '\'' +
-				", end='" + end + '\'' +
-				", mask='" + mask + '\'' +
-				'}';
-	}
 }

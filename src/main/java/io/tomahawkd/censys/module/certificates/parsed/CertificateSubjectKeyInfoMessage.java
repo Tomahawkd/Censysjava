@@ -1,16 +1,16 @@
 package io.tomahawkd.censys.module.certificates.parsed;
 
-import com.google.gson.*;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
+import io.tomahawkd.censys.module.util.TypeAdapterRegister;
 
 import java.lang.reflect.Type;
 
 public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
-
-	static GsonBuilder registerConverter(GsonBuilder builder) {
-		return builder.registerTypeAdapter(CertificateSubjectKeyInfoMessage.class, new KeyTypeDeserializer());
-	}
 
 	@SerializedName("dsa_public_key")
 	private DSAPublicKey dsaPublicKey;
@@ -32,6 +32,11 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 	}
 
 	private static class KeyTypeDeserializer implements JsonDeserializer<CertificateSubjectKeyInfoMessage> {
+
+		static {
+			TypeAdapterRegister.getInstance().register(CertificateSubjectKeyInfoMessage.class,
+					new KeyTypeDeserializer());
+		}
 
 		@Override
 		public CertificateSubjectKeyInfoMessage
@@ -74,26 +79,14 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 		return rsaPublicKey;
 	}
 
-	@Override
-	public String toString() {
-		return "CertificateSubjectKeyInfoMessage{" +
-				"dsaPublicKey=" + dsaPublicKey +
-				", ecdsaPublicKey=" + ecdsaPublicKey +
-				", fingerprintSHA256='" + fingerprintSHA256 + '\'' +
-				", keyAlgorithm=" + keyAlgorithm +
-				", rsaPublicKey=" + rsaPublicKey +
-				", type=" + type +
-				'}';
-	}
-
-	public class DSAPublicKey {
+	public class DSAPublicKey extends AbstractMessage {
 		@Override
 		public String toString() {
 			return "";
 		}
 	}
 
-	public class ECDSAPublicKey {
+	public class ECDSAPublicKey extends AbstractMessage {
 
 		private String curve;
 		private String gx;
@@ -120,14 +113,9 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 		public String getPub() {
 			return pub;
 		}
-
-		@Override
-		public String toString() {
-			return new GsonBuilder().create().toJson(this);
-		}
 	}
 
-	public class RSAPublicKey {
+	public class RSAPublicKey extends AbstractMessage {
 
 		private long exponent;
 		private int length;
@@ -143,11 +131,6 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 
 		public String getModulus() {
 			return modulus;
-		}
-
-		@Override
-		public String toString() {
-			return new GsonBuilder().create().toJson(this);
 		}
 	}
 }

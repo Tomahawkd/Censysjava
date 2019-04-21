@@ -1,6 +1,8 @@
 package io.tomahawkd.censys.module.common;
 
-public class IdValueMessage {
+import io.tomahawkd.censys.module.AbstractMessage;
+
+public class IdValueMessage extends AbstractMessage {
 
 	private String id;
 	private String value;
@@ -11,13 +13,5 @@ public class IdValueMessage {
 
 	public String getValue() {
 		return value;
-	}
-
-	@Override
-	public String toString() {
-		return "{" +
-				"id='" + id + '\'' +
-				", value='" + value + '\'' +
-				'}';
 	}
 }

@@ -1,6 +1,5 @@
 package io.tomahawkd.censys.module.certificates.parsed.extension;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 
@@ -19,10 +18,5 @@ public class AuthorityInfoAccessExtensionMessage extends AbstractMessage {
 
 	public List<String> getOcspUrls() {
 		return ocspUrls;
-	}
-
-	@Override
-	public String toString() {
-		return new GsonBuilder().create().toJson(this);
 	}
 }

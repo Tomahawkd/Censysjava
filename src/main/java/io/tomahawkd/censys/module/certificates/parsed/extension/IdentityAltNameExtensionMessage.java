@@ -1,10 +1,9 @@
 package io.tomahawkd.censys.module.certificates.parsed.extension;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
-import io.tomahawkd.censys.module.common.IdValueMessage;
 import io.tomahawkd.censys.module.certificates.parsed.CertificateIdentityMessage;
+import io.tomahawkd.censys.module.common.IdValueMessage;
 
 import java.util.List;
 
@@ -59,12 +58,7 @@ public class IdentityAltNameExtensionMessage extends AbstractMessage {
 		return uniformResourceIdentifiers;
 	}
 
-	@Override
-	public String toString() {
-		return new GsonBuilder().create().toJson(this);
-	}
-
-	public class EDIParty {
+	public class EDIParty extends AbstractMessage {
 
 		@SerializedName("name_assigner")
 		private String nameAssigner;
@@ -77,11 +71,6 @@ public class IdentityAltNameExtensionMessage extends AbstractMessage {
 
 		public String getPartyName() {
 			return partyName;
-		}
-
-		@Override
-		public String toString() {
-			return new GsonBuilder().create().toJson(this);
 		}
 	}
 }

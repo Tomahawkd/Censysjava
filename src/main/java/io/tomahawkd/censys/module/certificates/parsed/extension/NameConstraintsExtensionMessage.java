@@ -1,6 +1,5 @@
 package io.tomahawkd.censys.module.certificates.parsed.extension;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 import io.tomahawkd.censys.module.certificates.parsed.CertificateIdentityMessage;
@@ -89,8 +88,4 @@ public class NameConstraintsExtensionMessage extends AbstractMessage {
 		return permittedRegisteredIds;
 	}
 
-	@Override
-	public String toString() {
-		return new GsonBuilder().create().toJson(this);
-	}
 }

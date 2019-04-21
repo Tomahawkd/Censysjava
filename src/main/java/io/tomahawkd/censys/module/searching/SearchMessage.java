@@ -22,12 +22,4 @@ public class SearchMessage<T> extends AbstractMessage {
 		return metadata;
 	}
 
-	@Override
-	public String toString() {
-		return "SearchMessage{" +
-				"status='" + status + '\'' +
-				", results=" + results +
-				", metadata=" + metadata +
-				'}';
-	}
 }

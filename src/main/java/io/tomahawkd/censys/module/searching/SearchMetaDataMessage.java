@@ -33,15 +33,4 @@ public class SearchMetaDataMessage extends AbstractMessage {
 	public int getAllPage() {
 		return allPage;
 	}
-
-	@Override
-	public String toString() {
-		return "SearchMetaDataMessage{" +
-				"count=" + count +
-				", query='" + query + '\'' +
-				", usedTime=" + usedTime +
-				", currentPage=" + currentPage +
-				", allPage=" + allPage +
-				'}';
-	}
 }

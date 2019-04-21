@@ -1,6 +1,5 @@
 package io.tomahawkd.censys.module.certificates.parsed.extension;
 
-import com.google.gson.GsonBuilder;
 import io.tomahawkd.censys.module.AbstractMessage;
 
 public class CertificateUnknownExtensionsMessage extends AbstractMessage {
@@ -21,8 +20,4 @@ public class CertificateUnknownExtensionsMessage extends AbstractMessage {
 		return value;
 	}
 
-	@Override
-	public String toString() {
-		return new GsonBuilder().create().toJson(this);
-	}
 }

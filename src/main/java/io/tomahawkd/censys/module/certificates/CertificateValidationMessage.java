@@ -1,6 +1,5 @@
 package io.tomahawkd.censys.module.certificates;
 
-import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 
@@ -32,18 +31,7 @@ public class CertificateValidationMessage extends AbstractMessage {
 		return nss;
 	}
 
-	@Override
-	public String toString() {
-		return "CertificateValidationMessage{" +
-				"android=" + android +
-				", apple=" + apple +
-				", java=" + java +
-				", microsoft=" + microsoft +
-				", nss=" + nss +
-				'}';
-	}
-
-	public class Validation {
+	public class Validation extends AbstractMessage {
 
 		@SerializedName("trusted_path")
 		private boolean trustedPath;
@@ -66,11 +54,6 @@ public class CertificateValidationMessage extends AbstractMessage {
 
 		public boolean isWasValid() {
 			return wasValid;
-		}
-
-		@Override
-		public String toString() {
-			return new GsonBuilder().create().toJson(this);
 		}
 	}
 }
