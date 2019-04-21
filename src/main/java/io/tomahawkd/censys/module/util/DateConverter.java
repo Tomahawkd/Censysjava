@@ -13,7 +13,9 @@ import java.util.Date;
 
 public class DateConverter implements JsonConverter<Date> {
 
-	public static final Class<Date> targetClass = Date.class;
+	static {
+		TypeAdapterRegister.getInstance().register(Date.class, new DateConverter());
+	}
 
 	@Override
 	public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
