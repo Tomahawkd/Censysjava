@@ -1,45 +1,23 @@
 package io.tomahawkd.censys.module.certificates;
 
-import com.google.gson.annotations.SerializedName;
+import com.google.gson.GsonBuilder;
 import io.tomahawkd.censys.module.AbstractMessage;
+import io.tomahawkd.censys.module.certificates.parsed.ParsedCertificateMessage;
 
 public class ParsedCertMessage extends AbstractMessage {
 
-	private Content parsed;
-
-	public String getFingerprint() {
-		return parsed.fingerprint;
+	static GsonBuilder registerConverter(GsonBuilder builder) {
+		return ParsedCertificateMessage.registerConverter(builder);
 	}
 
-	public String getSubjectDN() {
-		return parsed.subjectDN;
-	}
+	private ParsedCertificateMessage parsed;
 
-	public String getIssuerDN() {
-		return parsed.issuerDN;
+	public ParsedCertificateMessage getParsed() {
+		return parsed;
 	}
 
 	@Override
 	public String toString() {
 		return parsed.toString();
-	}
-
-	private class Content {
-
-		@SerializedName("fingerprint_sha256")
-		private String fingerprint;
-		@SerializedName("subject_dn")
-		private String subjectDN;
-		@SerializedName("issuer_dn")
-		private String issuerDN;
-
-		@Override
-		public String toString() {
-			return "ParsedCertMessage{" +
-					"fingerprint='" + fingerprint + '\'' +
-					", subjectDN='" + subjectDN + '\'' +
-					", issuerDN='" + issuerDN + '\'' +
-					'}';
-		}
 	}
 }

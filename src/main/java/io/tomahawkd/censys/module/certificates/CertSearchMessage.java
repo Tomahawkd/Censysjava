@@ -9,7 +9,8 @@ import java.util.List;
 public class CertSearchMessage extends AbstractMessage {
 
 	public static CertSearchMessage parse(String data) {
-		return new GsonBuilder().create().fromJson(data, CertSearchMessage.class);
+		return ParsedCertMessage.registerConverter(new GsonBuilder()).create()
+				.fromJson(data, CertSearchMessage.class);
 	}
 
 	private String status;
