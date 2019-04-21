@@ -3,7 +3,7 @@ package io.tomahawkd.censys.module.account;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
-import io.tomahawkd.censys.module.common.DateConverter;
+import io.tomahawkd.censys.module.util.DateConverter;
 
 import java.util.Date;
 

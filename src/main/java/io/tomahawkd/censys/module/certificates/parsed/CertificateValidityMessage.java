@@ -2,7 +2,7 @@ package io.tomahawkd.censys.module.certificates.parsed;
 
 import com.google.gson.GsonBuilder;
 import io.tomahawkd.censys.module.AbstractMessage;
-import io.tomahawkd.censys.module.common.DateConverter;
+import io.tomahawkd.censys.module.util.DateConverter;
 
 import java.util.Date;
 

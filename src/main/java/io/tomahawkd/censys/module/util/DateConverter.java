@@ -1,4 +1,4 @@
-package io.tomahawkd.censys.module.common;
+package io.tomahawkd.censys.module.util;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;

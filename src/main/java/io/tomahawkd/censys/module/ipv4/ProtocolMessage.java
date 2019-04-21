@@ -2,7 +2,7 @@ package io.tomahawkd.censys.module.ipv4;
 
 import com.google.gson.*;
 import io.tomahawkd.censys.module.AbstractMessage;
-import io.tomahawkd.censys.module.common.JsonConverter;
+import io.tomahawkd.censys.module.util.JsonConverter;
 
 import java.lang.reflect.Type;
 
