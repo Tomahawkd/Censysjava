@@ -8,7 +8,7 @@ import java.lang.reflect.Field;
 
 public abstract class AbstractMessage implements Message {
 
-	private GsonBuilder builder = new GsonBuilder();
+	private transient GsonBuilder builder = new GsonBuilder();
 
 	public Message parse(String data) {
 		register(builder);
