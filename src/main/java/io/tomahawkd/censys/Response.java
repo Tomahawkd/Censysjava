@@ -32,14 +32,14 @@ public class Response<ExpectMessage extends Message> {
 			if (this.status != Status.OK) {
 				if (this.status == Status.FORBIDDEN) {
 					contentMessage = (Message) AuthenticationErrorMessage.class.getMethod("parse", String.class)
-							.invoke(null, result);
+							.invoke(AuthenticationErrorMessage.class.newInstance(), result);
 				} else {
 					contentMessage = (Message) GenericErrorMessage.class.getMethod("parse", String.class)
-							.invoke(null, result);
+							.invoke(GenericErrorMessage.class.newInstance(), result);
 				}
 			} else {
 				contentMessage = (Message) this.expectMessageClass.getMethod("parse", String.class)
-						.invoke(null, result);
+						.invoke(expectMessageClass.newInstance(), result);
 			}
 
 			this.message = contentMessage;
@@ -47,7 +47,8 @@ public class Response<ExpectMessage extends Message> {
 		} catch (IllegalAccessException |
 				InvocationTargetException |
 				NoSuchMethodException |
-				ClassCastException e) {
+				ClassCastException |
+				InstantiationException e) {
 			throw new IllegalStateException(e.getCause());
 		}
 	}
