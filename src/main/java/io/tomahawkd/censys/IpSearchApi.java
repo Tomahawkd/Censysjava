@@ -1,7 +1,7 @@
 package io.tomahawkd.censys;
 
-import io.tomahawkd.censys.module.QueryMessage;
-import io.tomahawkd.censys.module.ipv4.IpSearchMessage;
+import io.tomahawkd.censys.module.searching.SearchQueryMessage;
+import io.tomahawkd.censys.module.searching.IpSearchMessage;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class IpSearchApi extends AbstractSearchApi {
 		try {
 			return postForClass(IpSearchMessage.class,
 					url, accountService.getToken(),
-					null, new QueryMessage(query, page, fields).buildJson());
+					null, new SearchQueryMessage(query, page, fields).buildJson());
 		} catch (IOException e) {
 			return null;
 		}

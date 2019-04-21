@@ -1,7 +1,7 @@
 package io.tomahawkd.censys;
 
-import io.tomahawkd.censys.module.QueryMessage;
-import io.tomahawkd.censys.module.websites.WebsiteSearchMessage;
+import io.tomahawkd.censys.module.searching.SearchQueryMessage;
+import io.tomahawkd.censys.module.searching.WebsiteSearchMessage;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,7 +20,7 @@ public class WebsiteSearchApi extends AbstractSearchApi {
 		try {
 			return postForClass(WebsiteSearchMessage.class,
 					url, accountService.getToken(),
-					null, new QueryMessage(query, page, fields).buildJson());
+					null, new SearchQueryMessage(query, page, fields).buildJson());
 		} catch (IOException e) {
 			return null;
 		}
