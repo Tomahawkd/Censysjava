@@ -6,7 +6,7 @@ import io.tomahawkd.censys.module.certificates.parsed.ParsedCertificateMessage;
 
 public class CertificateMessage extends AbstractMessage {
 
-	static GsonBuilder registerConverter(GsonBuilder builder) {
+	public static GsonBuilder registerConverter(GsonBuilder builder) {
 		return ParsedCertificateMessage.registerConverter(builder);
 	}
 

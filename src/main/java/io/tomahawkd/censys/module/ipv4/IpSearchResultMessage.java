@@ -2,13 +2,14 @@ package io.tomahawkd.censys.module.ipv4;
 
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.SerializedName;
+import io.tomahawkd.censys.module.AbstractMessage;
 import io.tomahawkd.censys.module.common.LocationMessage;
 
 import java.util.List;
 
-public class IpSearchResultMessage {
+public class IpSearchResultMessage extends AbstractMessage {
 
-	static GsonBuilder registerConverter(GsonBuilder builder) {
+	public static GsonBuilder registerConverter(GsonBuilder builder) {
 		return ProtocolMessage.registerConverter(builder);
 	}
 
