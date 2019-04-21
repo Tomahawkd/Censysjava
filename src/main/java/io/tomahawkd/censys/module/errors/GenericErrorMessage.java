@@ -10,10 +10,21 @@ public class GenericErrorMessage extends ErrorMessage {
 				.fromJson(data, GenericErrorMessage.class);
 	}
 
+	private String status;
+	@SerializedName("error_type")
+	private String errorType;
 	@SerializedName("error_code")
 	private int errorCode;
 	@SerializedName("error")
 	private String errorMessage;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public String getErrorType() {
+		return errorType;
+	}
 
 	public int getErrorCode() {
 		return errorCode;
