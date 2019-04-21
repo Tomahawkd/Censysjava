@@ -22,3 +22,40 @@ public class Main {
     }
 }
 ```
+
+## Development on Custom Message
+Since I made full use of java's reflection technique, now building a custom message is much easier.
+
+### How to build
+What to do is just focus on your message content.
+```java
+public class YourMessage extends AbstractMessage {
+	
+	// Use this annotation if necessary
+	// More information about field customization 
+	// please go to https://github.com/google/gson
+	@SerializedName("m")
+	private String message;
+	
+    public String getMessage() {
+    	return message;
+    }
+}
+```
+
+### About custom Serializer/Deserializer/TypeAdapter
+
+Just add one line for registration
+```java
+public class DateSerializer implements JsonSerializer<Date> {
+	
+	static {
+		TypeAdapterRegister.getInstance().register(Date.class, new DateSerializer());
+	}
+	
+	@Override
+    public JsonElement serialize(Date src, Type typeOfSrc, JsonSerializationContext context) {
+		return context.serialize(src.toString());
+	}
+}
+```
