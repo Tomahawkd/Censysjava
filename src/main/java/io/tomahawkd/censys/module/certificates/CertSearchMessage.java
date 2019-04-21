@@ -9,19 +9,19 @@ import java.util.List;
 public class CertSearchMessage extends AbstractMessage {
 
 	public static CertSearchMessage parse(String data) {
-		return ParsedCertMessage.registerConverter(new GsonBuilder()).create()
+		return CertificateMessage.registerConverter(new GsonBuilder()).create()
 				.fromJson(data, CertSearchMessage.class);
 	}
 
 	private String status;
-	private List<ParsedCertMessage> results;
+	private List<CertificateMessage> results;
 	private MetaDataMessage metadata;
 
 	public String getStatus() {
 		return status;
 	}
 
-	public List<ParsedCertMessage> getParsed() {
+	public List<CertificateMessage> getParsed() {
 		return results;
 	}
 

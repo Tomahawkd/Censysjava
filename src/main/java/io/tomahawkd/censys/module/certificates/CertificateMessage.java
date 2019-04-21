@@ -4,7 +4,7 @@ import com.google.gson.GsonBuilder;
 import io.tomahawkd.censys.module.AbstractMessage;
 import io.tomahawkd.censys.module.certificates.parsed.ParsedCertificateMessage;
 
-public class ParsedCertMessage extends AbstractMessage {
+public class CertificateMessage extends AbstractMessage {
 
 	static GsonBuilder registerConverter(GsonBuilder builder) {
 		return ParsedCertificateMessage.registerConverter(builder);
