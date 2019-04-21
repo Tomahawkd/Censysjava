@@ -1,9 +1,9 @@
-package io.tomahawkd.censys.module;
+package io.tomahawkd.censys.module.searching;
 
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 
-public class MetaDataMessage extends AbstractMessage {
+public class SearchMetaDataMessage extends AbstractMessage {
 
 	private int count;
 	private String query;
@@ -36,7 +36,7 @@ public class MetaDataMessage extends AbstractMessage {
 
 	@Override
 	public String toString() {
-		return "MetaDataMessage{" +
+		return "SearchMetaDataMessage{" +
 				"count=" + count +
 				", query='" + query + '\'' +
 				", usedTime=" + usedTime +
