@@ -14,7 +14,7 @@ public class AuthenticationErrorMessage extends ErrorMessage {
 	@SerializedName("error_type")
 	private String errorType;
 	@SerializedName("error")
-	private String errorMessge;
+	private String errorMessage;
 
 	public String getStatus() {
 		return status;
@@ -26,6 +26,6 @@ public class AuthenticationErrorMessage extends ErrorMessage {
 
 	@Override
 	public String getErrorMessage() {
-		return errorMessge;
+		return errorMessage;
 	}
 }
