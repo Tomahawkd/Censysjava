@@ -4,7 +4,7 @@ Censys api for java
 Not complete yet.
 
 ## Usage
-Now I just implemented ip search.
+Currently I have implemented search api.
 ```java
 public class Main {
     public static void main(String[] args){
