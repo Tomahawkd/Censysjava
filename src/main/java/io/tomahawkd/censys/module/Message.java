@@ -7,9 +7,6 @@ public interface Message {
 
 	Message parse(String data);
 
-	@Contract("_ -> param1")
-	GsonBuilder register(GsonBuilder builder);
-
 	String getMessage();
 
 	String buildJson();

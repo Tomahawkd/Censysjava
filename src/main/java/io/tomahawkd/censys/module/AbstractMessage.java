@@ -16,13 +16,13 @@ public abstract class AbstractMessage implements Message {
 	}
 
 	@Contract("_ -> param1")
-	public GsonBuilder register(GsonBuilder builder) {
+	private GsonBuilder register(GsonBuilder builder) {
 		Field[] fields = this.getClass().getFields();
 		for (Field field : fields) {
 			Class type = field.getType();
-			if (Message.class.isAssignableFrom(type)) {
+			if (AbstractMessage.class.isAssignableFrom(type)) {
 				try {
-					((Message) field.getType().newInstance()).register(builder);
+					((AbstractMessage) field.getType().newInstance()).register(builder);
 				} catch (InstantiationException | IllegalAccessException e) {
 					e.printStackTrace();
 				}
