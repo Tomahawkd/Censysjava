@@ -27,5 +27,47 @@ public class TLSMessage extends BasicInfoMessage {
 	private TLSValidationMessage validation;
 	private String version;
 
+	public CertificateMessage getCertificate() {
+		return certificate;
+	}
 
+	public List<CertificateMessage> getChain() {
+		return chain;
+	}
+
+	public CipherSuiteMessage getCipherSuite() {
+		return cipherSuite;
+	}
+
+	public boolean isOcspStapling() {
+		return ocspStapling;
+	}
+
+	public SignedCertificateTimestampExtensionMessage getScts() {
+		return scts;
+	}
+
+	public boolean isSecureRenegotiation() {
+		return secureRenegotiation;
+	}
+
+	public ServerKeyExchangeMessage getServerKeyExchange() {
+		return serverKeyExchange;
+	}
+
+	public SessionTicketMessage getSessionTicket() {
+		return sessionTicket;
+	}
+
+	public TLSSignatureMessage getSignature() {
+		return signature;
+	}
+
+	public TLSValidationMessage getValidation() {
+		return validation;
+	}
+
+	public String getVersion() {
+		return version;
+	}
 }
