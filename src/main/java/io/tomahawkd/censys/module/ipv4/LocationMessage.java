@@ -1,4 +1,4 @@
-package io.tomahawkd.censys.module.common;
+package io.tomahawkd.censys.module.ipv4;
 
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;

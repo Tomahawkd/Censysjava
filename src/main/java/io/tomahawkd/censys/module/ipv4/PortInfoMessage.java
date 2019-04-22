@@ -4,12 +4,13 @@ import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.JsonSerializationContext;
+import com.google.gson.annotations.JsonAdapter;
 import io.tomahawkd.censys.module.AbstractMessage;
 import io.tomahawkd.censys.module.util.JsonConverter;
-import io.tomahawkd.censys.module.util.TypeAdapterRegister;
 
 import java.lang.reflect.Type;
 
+@JsonAdapter(PortInfoMessage.ProtocolConverter.class)
 public class PortInfoMessage extends AbstractMessage {
 
 	private int port;
@@ -28,11 +29,7 @@ public class PortInfoMessage extends AbstractMessage {
 		return service;
 	}
 
-	static class ProtocolConverter implements JsonConverter<PortInfoMessage> {
-
-		static {
-			TypeAdapterRegister.getInstance().register(PortInfoMessage.class, new ProtocolConverter());
-		}
+	class ProtocolConverter implements JsonConverter<PortInfoMessage> {
 
 		@Override
 		public PortInfoMessage deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
