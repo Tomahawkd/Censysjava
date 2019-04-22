@@ -1,7 +1,9 @@
 package io.tomahawkd.censys;
 
-import io.tomahawkd.censys.module.searching.SearchQueryMessage;
+import io.tomahawkd.censys.module.reporting.ReportMessage;
+import io.tomahawkd.censys.module.reporting.ReportQueryMessage;
 import io.tomahawkd.censys.module.searching.IpSearchMessage;
+import io.tomahawkd.censys.module.searching.SearchQueryMessage;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.IOException;
@@ -43,8 +45,14 @@ public class IpSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response report(String query, String field, int buckets) {
-		return null;
+	Response<ReportMessage> report(String query, String field, int buckets) {
+		String url = constructURL("report", CENSYS_INDEX_IP);
+		try {
+			return postForClass(ReportMessage.class,
+					url, accountService.getToken(), new ReportQueryMessage(query, field, buckets).buildJson());
+		} catch (IOException e) {
+			return null;
+		}
 	}
 
 	private void checkId(String id) {
