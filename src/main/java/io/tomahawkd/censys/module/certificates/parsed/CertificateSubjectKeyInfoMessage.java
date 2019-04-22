@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
+import io.tomahawkd.censys.module.common.cipher.ECDSAParamMessage;
 import io.tomahawkd.censys.module.common.cipher.RSAParamMessage;
 import io.tomahawkd.censys.module.util.TypeAdapterRegister;
 
@@ -16,7 +17,7 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 	@SerializedName("dsa_public_key")
 	private DSAPublicKey dsaPublicKey;
 	@SerializedName("ecdsa_public_key")
-	private ECDSAPublicKey ecdsaPublicKey;
+	private ECDSAParamMessage ecdsaPublicKey;
 	@SerializedName("fingerprint_sha256")
 	private String fingerprintSHA256;
 	@SerializedName("key_algorithm")
@@ -64,7 +65,7 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 		return dsaPublicKey;
 	}
 
-	public ECDSAPublicKey getEcdsaPublicKey() {
+	public ECDSAParamMessage getEcdsaPublicKey() {
 		return ecdsaPublicKey;
 	}
 
@@ -84,35 +85,6 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 		@Override
 		public String toString() {
 			return "";
-		}
-	}
-
-	public class ECDSAPublicKey extends AbstractMessage {
-
-		private String curve;
-		private String gx;
-		private String gy;
-		private int length;
-		private String pub;
-
-		public String getCurve() {
-			return curve;
-		}
-
-		public String getGx() {
-			return gx;
-		}
-
-		public String getGy() {
-			return gy;
-		}
-
-		public int getLength() {
-			return length;
-		}
-
-		public String getPub() {
-			return pub;
 		}
 	}
 }
