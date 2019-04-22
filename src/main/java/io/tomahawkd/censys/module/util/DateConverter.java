@@ -13,17 +13,13 @@ import java.util.Date;
 
 public class DateConverter implements JsonConverter<Date> {
 
-	static {
-		TypeAdapterRegister.getInstance().register(Date.class, new DateConverter());
-	}
-
 	@Override
 	public Date deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 			throws JsonParseException {
 		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String date = json.getAsString().replace("\"", "");
+		String date = json.getAsString().replace("\"", "").replace("T", " ");
 		try {
-			return formatter.parse(json.getAsString());
+			return formatter.parse(date);
 		} catch (ParseException e) {
 			e.printStackTrace();
 			return null;
