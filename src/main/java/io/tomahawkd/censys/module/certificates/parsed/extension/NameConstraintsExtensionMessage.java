@@ -13,7 +13,7 @@ public class NameConstraintsExtensionMessage extends AbstractMessage {
 	@SerializedName("excluded_directory_names")
 	private List<CertificateIdentityMessage> excludedDirectoryNames;
 	@SerializedName("excluded_edi_party_names")
-	private List<IdentityAltNameExtensionMessage.EDIParty> excludedEdiPartyNames;
+	private List<IdentityAlternativeNameExtensionMessage.EDIParty> excludedEdiPartyNames;
 	@SerializedName("excluded_email_addresses")
 	private List<String> excludedEmailAddress;
 	@SerializedName("excluded_ip_addresses")
@@ -26,7 +26,7 @@ public class NameConstraintsExtensionMessage extends AbstractMessage {
 	@SerializedName("permitted_directory_names")
 	private List<CertificateIdentityMessage> permittedDirectoryNames;
 	@SerializedName("permitted_edi_party_names")
-	private List<IdentityAltNameExtensionMessage.EDIParty> permittedEdiPartyNames;
+	private List<IdentityAlternativeNameExtensionMessage.EDIParty> permittedEdiPartyNames;
 	@SerializedName("permitted_email_addresses")
 	private List<String> permittedEmailAddress;
 	@SerializedName("permitted_ip_addresses")
@@ -44,7 +44,7 @@ public class NameConstraintsExtensionMessage extends AbstractMessage {
 		return excludedDirectoryNames;
 	}
 
-	public List<IdentityAltNameExtensionMessage.EDIParty> getExcludedEdiPartyNames() {
+	public List<IdentityAlternativeNameExtensionMessage.EDIParty> getExcludedEdiPartyNames() {
 		return excludedEdiPartyNames;
 	}
 
@@ -68,7 +68,7 @@ public class NameConstraintsExtensionMessage extends AbstractMessage {
 		return permittedDirectoryNames;
 	}
 
-	public List<IdentityAltNameExtensionMessage.EDIParty> getPermittedEdiPartyNames() {
+	public List<IdentityAlternativeNameExtensionMessage.EDIParty> getPermittedEdiPartyNames() {
 		return permittedEdiPartyNames;
 	}
 

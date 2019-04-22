@@ -16,7 +16,7 @@ public class ParsedCertificateMessage extends AbstractMessage {
 	private String fingerprintSHA1;
 	@SerializedName("fingerprint_sha256")
 	private String fingerprintSHA256;
-	private CertificateIdentityMessage issuer;
+	private CertificateIssuerMessage issuer;
 	@SerializedName("issuer_dn")
 	private String issuerDN;
 	private List<String> names;
@@ -28,7 +28,7 @@ public class ParsedCertificateMessage extends AbstractMessage {
 	private CertificateAlgorithmMessage signatureAlgorithm;
 	@SerializedName("spki_subject_fingerprint")
 	private String fingerprintSPKISubject;
-	private CertificateIdentityMessage subject;
+	private CertificateSubjectMessage subject;
 	@SerializedName("subject_dn")
 	private String subjectDN;
 	@SerializedName("subject_key_info")
@@ -60,7 +60,7 @@ public class ParsedCertificateMessage extends AbstractMessage {
 		return fingerprintSHA256;
 	}
 
-	public CertificateIdentityMessage getIssuer() {
+	public CertificateIssuerMessage getIssuer() {
 		return issuer;
 	}
 
@@ -92,7 +92,7 @@ public class ParsedCertificateMessage extends AbstractMessage {
 		return fingerprintSPKISubject;
 	}
 
-	public CertificateIdentityMessage getSubject() {
+	public CertificateSubjectMessage getSubject() {
 		return subject;
 	}
 

@@ -6,6 +6,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
+import io.tomahawkd.censys.module.common.cipher.RSAParamMessage;
 import io.tomahawkd.censys.module.util.TypeAdapterRegister;
 
 import java.lang.reflect.Type;
@@ -21,7 +22,7 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 	@SerializedName("key_algorithm")
 	private CertificateAlgorithmMessage keyAlgorithm;
 	@SerializedName("rsa_public_key")
-	private RSAPublicKey rsaPublicKey;
+	private RSAParamMessage rsaPublicKey;
 
 	// Exclude it default
 	private transient KeyType type;
@@ -75,7 +76,7 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 		return keyAlgorithm;
 	}
 
-	public RSAPublicKey getRsaPublicKey() {
+	public RSAParamMessage getRsaPublicKey() {
 		return rsaPublicKey;
 	}
 
@@ -112,25 +113,6 @@ public class CertificateSubjectKeyInfoMessage extends AbstractMessage {
 
 		public String getPub() {
 			return pub;
-		}
-	}
-
-	public class RSAPublicKey extends AbstractMessage {
-
-		private long exponent;
-		private int length;
-		private String modulus;
-
-		public long getExponent() {
-			return exponent;
-		}
-
-		public int getLength() {
-			return length;
-		}
-
-		public String getModulus() {
-			return modulus;
 		}
 	}
 }

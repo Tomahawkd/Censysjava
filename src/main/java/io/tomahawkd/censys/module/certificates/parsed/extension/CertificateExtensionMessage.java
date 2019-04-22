@@ -22,7 +22,7 @@ public class CertificateExtensionMessage extends AbstractMessage {
 	@SerializedName("extended_key_usage")
 	private ExtendedKeyUsageExtensionMessage extendedKeyUsage;
 	@SerializedName("issuer_alt_name")
-	private IdentityAltNameExtensionMessage issuerAltName;
+	private IssuerAlternativeNameExtensionMessage issuerAltName;
 	@SerializedName("key_usage")
 	private KeyUsageExtensionMessage keyUsage;
 	@SerializedName("name_constraints")
@@ -30,7 +30,7 @@ public class CertificateExtensionMessage extends AbstractMessage {
 	@SerializedName("signed_certificate_timestamps")
 	private List<SignedCertificateTimestampExtensionMessage> signedCertificateTimestamps;
 	@SerializedName("subject_alt_name")
-	private IdentityAltNameExtensionMessage subjectAltName;
+	private SubjectAlternativeNameExtensionMessage subjectAltName;
 	@SerializedName("subject_key_id")
 	private String subjectKeyId;
 
@@ -62,7 +62,7 @@ public class CertificateExtensionMessage extends AbstractMessage {
 		return extendedKeyUsage;
 	}
 
-	public IdentityAltNameExtensionMessage getIssuerAltName() {
+	public IssuerAlternativeNameExtensionMessage getIssuerAltName() {
 		return issuerAltName;
 	}
 
@@ -78,7 +78,7 @@ public class CertificateExtensionMessage extends AbstractMessage {
 		return signedCertificateTimestamps;
 	}
 
-	public IdentityAltNameExtensionMessage getSubjectAltName() {
+	public SubjectAlternativeNameExtensionMessage getSubjectAltName() {
 		return subjectAltName;
 	}
 

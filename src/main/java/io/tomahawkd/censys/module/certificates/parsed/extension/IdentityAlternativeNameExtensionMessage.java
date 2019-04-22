@@ -3,11 +3,10 @@ package io.tomahawkd.censys.module.certificates.parsed.extension;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 import io.tomahawkd.censys.module.certificates.parsed.CertificateIdentityMessage;
-import io.tomahawkd.censys.module.common.IdValueMessage;
 
 import java.util.List;
 
-public class IdentityAltNameExtensionMessage extends AbstractMessage {
+public class IdentityAlternativeNameExtensionMessage extends AbstractMessage {
 
 	@SerializedName("directory_names")
 	private List<CertificateIdentityMessage> directoryNames;
@@ -20,7 +19,7 @@ public class IdentityAltNameExtensionMessage extends AbstractMessage {
 	@SerializedName("ip_addresses")
 	private List<String> ipAddress;
 	@SerializedName("other_names")
-	private List<IdValueMessage> otherNames;
+	private List<NamesMessage> otherNames;
 	@SerializedName("registered_ids")
 	private List<String> registeredIds;
 	@SerializedName("uniform_resource_identifiers")
@@ -46,7 +45,7 @@ public class IdentityAltNameExtensionMessage extends AbstractMessage {
 		return ipAddress;
 	}
 
-	public List<IdValueMessage> getOtherNames() {
+	public List<NamesMessage> getOtherNames() {
 		return otherNames;
 	}
 
