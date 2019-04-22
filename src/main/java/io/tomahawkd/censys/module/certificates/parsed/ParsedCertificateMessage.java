@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ParsedCertificateMessage extends AbstractMessage {
 
-	private CertificateExtensionMessage extension;
+	private CertificateExtensionMessage extensions;
 	@SerializedName("fingerprint_md5")
 	private String fingerprintMD5;
 	@SerializedName("fingerprint_sha1")
@@ -44,8 +44,8 @@ public class ParsedCertificateMessage extends AbstractMessage {
 	private CertificateValidityMessage validity;
 	private short version;
 
-	public CertificateExtensionMessage getExtension() {
-		return extension;
+	public CertificateExtensionMessage getExtensions() {
+		return extensions;
 	}
 
 	public String getFingerprintMD5() {
