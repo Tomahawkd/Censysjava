@@ -1,16 +1,17 @@
 package io.tomahawkd.censys.module.protocol.http;
 
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import io.tomahawkd.censys.module.AbstractMessage;
-import io.tomahawkd.censys.module.util.TypeAdapterRegister;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+@JsonAdapter(HeadersMessage.HeaderTypeAdapter.class)
 public class HeadersMessage extends AbstractMessage {
 
 	private Map<String, String> headers = new HashMap<>();
@@ -24,11 +25,7 @@ public class HeadersMessage extends AbstractMessage {
 		return unknown;
 	}
 
-	private static class HeaderTypeAdapter extends TypeAdapter<HeadersMessage> {
-
-		static {
-			TypeAdapterRegister.getInstance().register(HeadersMessage.class, new HeaderTypeAdapter());
-		}
+	class HeaderTypeAdapter extends TypeAdapter<HeadersMessage> {
 
 		@Override
 		public void write(JsonWriter out, HeadersMessage value) throws IOException {
