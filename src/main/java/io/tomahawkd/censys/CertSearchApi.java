@@ -2,6 +2,7 @@ package io.tomahawkd.censys;
 
 import io.tomahawkd.censys.module.certificates.CertificateMessage;
 import io.tomahawkd.censys.module.reporting.ReportMessage;
+import io.tomahawkd.censys.module.reporting.ReportQueryMessage;
 import io.tomahawkd.censys.module.searching.CertSearchMessage;
 import io.tomahawkd.censys.module.searching.SearchQueryMessage;
 
@@ -41,7 +42,8 @@ public class CertSearchApi extends AbstractSearchApi {
 	Response<ReportMessage> report(String query, String field, int buckets) {
 		String url = constructURL("report", CENSYS_INDEX_CERT);
 		try {
-			return getForClass(ReportMessage.class, url, accountService.getToken());
+			return postForClass(ReportMessage.class,
+					url, accountService.getToken(), new ReportQueryMessage(query, field, buckets).buildJson());
 		} catch (IOException e) {
 			return null;
 		}
