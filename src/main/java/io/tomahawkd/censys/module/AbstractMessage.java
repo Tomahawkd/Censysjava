@@ -5,13 +5,17 @@ import io.tomahawkd.censys.module.util.TypeAdapterRegister;
 import org.jetbrains.annotations.Contract;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 
 public abstract class AbstractMessage implements Message {
 
-	private transient GsonBuilder builder = new GsonBuilder();
+	private transient GsonBuilder builder;
+
+	AbstractMessage() {
+		builder = register(new GsonBuilder());
+	}
 
 	public Message parse(String data) {
-		register(builder);
 		return builder.create().fromJson(data, this.getClass());
 	}
 
