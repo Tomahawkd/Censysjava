@@ -2,10 +2,16 @@ package io.tomahawkd.censys.module;
 
 import com.google.gson.GsonBuilder;
 
+import java.lang.reflect.Type;
+
 public abstract class AbstractMessage implements Message {
 
 	public Message parse(String data) {
-		return new GsonBuilder().create().fromJson(data, this.getClass());
+		return parse(data, this.getClass());
+	}
+
+	public Message parse(String data, Type expectClass) {
+		return new GsonBuilder().create().fromJson(data, expectClass);
 	}
 
 	@Override
