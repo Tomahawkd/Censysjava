@@ -41,7 +41,7 @@ public abstract class AbstractMessage implements Message {
 
 	@Override
 	public String buildJson() {
-		return toString();
+		return builder.create().toJson(this);
 	}
 
 	@Override
@@ -51,6 +51,6 @@ public abstract class AbstractMessage implements Message {
 
 	@Override
 	public String toString() {
-		return register(new GsonBuilder()).create().toJson(this);
+		return buildJson();
 	}
 }
