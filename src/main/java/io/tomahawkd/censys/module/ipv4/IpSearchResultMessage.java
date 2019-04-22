@@ -9,7 +9,7 @@ public class IpSearchResultMessage extends AbstractMessage {
 
 	private String ip;
 	private LocationMessage location;
-	private List<ProtocolMessage> protocols;
+	private List<PortInfoMessage> protocols;
 
 	public String getIp() {
 		return ip;
@@ -19,7 +19,7 @@ public class IpSearchResultMessage extends AbstractMessage {
 		return location;
 	}
 
-	public List<ProtocolMessage> getProtocols() {
+	public List<PortInfoMessage> getProtocols() {
 		return protocols;
 	}
 }

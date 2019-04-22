@@ -10,12 +10,12 @@ import io.tomahawkd.censys.module.util.TypeAdapterRegister;
 
 import java.lang.reflect.Type;
 
-public class ProtocolMessage extends AbstractMessage {
+public class PortInfoMessage extends AbstractMessage {
 
 	private int port;
 	private String service;
 
-	private ProtocolMessage(int port, String service) {
+	private PortInfoMessage(int port, String service) {
 		this.port = port;
 		this.service = service;
 	}
@@ -28,22 +28,22 @@ public class ProtocolMessage extends AbstractMessage {
 		return service;
 	}
 
-	static class ProtocolConverter implements JsonConverter<ProtocolMessage> {
+	static class ProtocolConverter implements JsonConverter<PortInfoMessage> {
 
 		static {
-			TypeAdapterRegister.getInstance().register(ProtocolMessage.class, new ProtocolConverter());
+			TypeAdapterRegister.getInstance().register(PortInfoMessage.class, new ProtocolConverter());
 		}
 
 		@Override
-		public ProtocolMessage deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+		public PortInfoMessage deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
 				throws JsonParseException {
 			String result = json.getAsString().replace("\"", "");
 			String[] l = result.split("/");
-			return new ProtocolMessage(Integer.parseInt(l[0]), l[1]);
+			return new PortInfoMessage(Integer.parseInt(l[0]), l[1]);
 		}
 
 		@Override
-		public JsonElement serialize(ProtocolMessage src, Type typeOfSrc, JsonSerializationContext context) {
+		public JsonElement serialize(PortInfoMessage src, Type typeOfSrc, JsonSerializationContext context) {
 			return context.serialize(src.port + "/" + src.service);
 		}
 	}
