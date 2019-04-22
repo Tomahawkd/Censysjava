@@ -1,13 +1,13 @@
 package io.tomahawkd.censys.module.websites;
 
 import com.google.gson.annotations.SerializedName;
-import io.tomahawkd.censys.module.AbstractMessage;
+import io.tomahawkd.censys.module.common.GenericModuleMessage;
 
-public class WebsiteMessage extends AbstractMessage {
+public class WebsiteMessage extends GenericModuleMessage {
 
-	private String domain;
 	@SerializedName("alexa_rank")
 	private int rank;
+	private String domain;
 
 	public String getDomain() {
 		return domain;
