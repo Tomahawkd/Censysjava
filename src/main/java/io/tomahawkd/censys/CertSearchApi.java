@@ -18,7 +18,7 @@ public class CertSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response<CertSearchMessage> search(String query, int page, List<String> fields) {
+	public Response<CertSearchMessage> search(String query, int page, List<String> fields) {
 		String url = constructURL("search", CENSYS_INDEX_CERT);
 		try {
 			return postForClass(CertSearchMessage.class,
@@ -29,7 +29,7 @@ public class CertSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response<CertificateMessage> view(String hash) {
+	public Response<CertificateMessage> view(String hash) {
 		String url = constructURL("view", CENSYS_INDEX_CERT) + "/" + hash;
 		try {
 			return getForClass(CertificateMessage.class, url, accountService.getToken());
@@ -39,7 +39,7 @@ public class CertSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response<ReportMessage> report(String query, String field, int buckets) {
+	public Response<ReportMessage> report(String query, String field, int buckets) {
 		String url = constructURL("report", CENSYS_INDEX_CERT);
 		try {
 			return postForClass(ReportMessage.class,

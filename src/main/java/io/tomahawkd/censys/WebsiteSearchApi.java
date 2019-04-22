@@ -17,7 +17,7 @@ public class WebsiteSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response<WebsiteSearchMessage> search(String query, int page, List<String> fields) {
+	public Response<WebsiteSearchMessage> search(String query, int page, List<String> fields) {
 		String url = constructURL("search", CENSYS_INDEX_WEBSITE);
 		try {
 			return postForClass(WebsiteSearchMessage.class,
@@ -28,12 +28,12 @@ public class WebsiteSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response view(String id) {
+	public Response view(String id) {
 		return null;
 	}
 
 	@Override
-	Response<ReportMessage> report(String query, String field, int buckets) {
+	public Response<ReportMessage> report(String query, String field, int buckets) {
 		String url = constructURL("report", CENSYS_INDEX_WEBSITE);
 		try {
 			return postForClass(ReportMessage.class,

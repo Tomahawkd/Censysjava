@@ -28,7 +28,7 @@ class AccountService extends AbstractService {
 		return new AccountService(tokenEncoded);
 	}
 
-	AccountMessage status() {
+	public AccountMessage status() {
 		try {
 			Response<AccountMessage> r = getForClass(AccountMessage.class,
 					constructURL(CENSYS_INDEX_ACCOUNT, ""), token);

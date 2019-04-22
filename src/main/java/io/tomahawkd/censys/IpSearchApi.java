@@ -18,7 +18,7 @@ public class IpSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response<IpSearchMessage> search(String query, int page, List<String> fields) {
+	public Response<IpSearchMessage> search(String query, int page, List<String> fields) {
 		String url = constructURL("search", CENSYS_INDEX_IP);
 		try {
 			return postForClass(IpSearchMessage.class,
@@ -30,7 +30,7 @@ public class IpSearchApi extends AbstractSearchApi {
 
 	@Override
 	@Nullable
-	Response view(String id) {
+	public Response view(String id) {
 		checkId(id);
 
 		String url = constructURL("view", CENSYS_INDEX_IP) + "/" + id;
@@ -45,7 +45,7 @@ public class IpSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	Response<ReportMessage> report(String query, String field, int buckets) {
+	public Response<ReportMessage> report(String query, String field, int buckets) {
 		String url = constructURL("report", CENSYS_INDEX_IP);
 		try {
 			return postForClass(ReportMessage.class,
