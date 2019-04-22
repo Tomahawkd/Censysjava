@@ -1,4 +1,4 @@
-package io.tomahawkd.censys.module.protocol.ip;
+package io.tomahawkd.censys.module.ipv4;
 
 import io.tomahawkd.censys.module.AbstractMessage;
 

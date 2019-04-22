@@ -3,7 +3,7 @@ package io.tomahawkd.censys.module.certificates.parsed.extension;
 import com.google.gson.annotations.SerializedName;
 import io.tomahawkd.censys.module.AbstractMessage;
 import io.tomahawkd.censys.module.certificates.parsed.CertificateIdentityMessage;
-import io.tomahawkd.censys.module.protocol.ip.IpAddressMessage;
+import io.tomahawkd.censys.module.ipv4.IpAddressMessage;
 
 import java.util.List;
 
