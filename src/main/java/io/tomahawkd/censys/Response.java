@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -20,17 +19,11 @@ public class Response<ExpectMessage extends Message> {
 
 	private Status status;
 	private Class<ExpectMessage> expectMessageClass;
-	private Type expectContentClass;
 	private Message message;
 
 	private Response(int status, String result, Class<ExpectMessage> clazz) {
-		this(status, result, clazz, null);
-	}
-
-	private Response(int status, String result, Class<ExpectMessage> clazz, @Nullable Type expectContentClass) {
 		this.status = Status.fromCode(status);
 		this.expectMessageClass = clazz;
-		this.expectContentClass = expectContentClass;
 
 		try {
 
@@ -44,13 +37,9 @@ public class Response<ExpectMessage extends Message> {
 							.invoke(GenericErrorMessage.class.newInstance(), result);
 				}
 			} else {
-				if (expectContentClass == null) {
-					contentMessage = (Message) this.expectMessageClass.getMethod("parse", String.class)
-							.invoke(expectMessageClass.newInstance(), result);
-				} else {
-					contentMessage = (Message) this.expectMessageClass.getMethod("parse", String.class, Type.class)
-							.invoke(expectMessageClass.newInstance(), result, expectContentClass);
-				}
+				contentMessage = (Message) this.expectMessageClass.getMethod("parse", String.class)
+						.invoke(expectMessageClass.newInstance(), result);
+
 
 			}
 

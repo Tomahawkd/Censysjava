@@ -7,11 +7,7 @@ import java.lang.reflect.Type;
 public abstract class AbstractMessage implements Message {
 
 	public Message parse(String data) {
-		return parse(data, this.getClass());
-	}
-
-	public Message parse(String data, Type expectClass) {
-		return new GsonBuilder().create().fromJson(data, expectClass);
+		return new GsonBuilder().create().fromJson(data, this.getClass());
 	}
 
 	@Override
