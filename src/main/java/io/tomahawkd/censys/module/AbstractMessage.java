@@ -23,6 +23,7 @@ public abstract class AbstractMessage implements Message {
 	private GsonBuilder register(GsonBuilder builder) {
 		Field[] fields = this.getClass().getFields();
 		for (Field field : fields) {
+			if (Modifier.isTransient(field.getModifiers())) continue;
 			Class type = field.getType();
 			if (AbstractMessage.class.isAssignableFrom(type)) {
 				try {
