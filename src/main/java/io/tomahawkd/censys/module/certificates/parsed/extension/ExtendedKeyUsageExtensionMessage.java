@@ -1,16 +1,17 @@
 package io.tomahawkd.censys.module.certificates.parsed.extension;
 
 import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
 import io.tomahawkd.censys.module.AbstractMessage;
-import io.tomahawkd.censys.module.util.TypeAdapterRegister;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@JsonAdapter(ExtendedKeyUsageExtensionMessage.ExtendedKeyUsageTypeAdapter.class)
 public class ExtendedKeyUsageExtensionMessage extends AbstractMessage {
 
 	private List<String> keyUsages = new ArrayList<>();
@@ -29,12 +30,7 @@ public class ExtendedKeyUsageExtensionMessage extends AbstractMessage {
 		return value;
 	}
 
-	private static class KeyUsageTypeAdapter extends TypeAdapter<ExtendedKeyUsageExtensionMessage> {
-
-		static {
-			TypeAdapterRegister.getInstance().register(ExtendedKeyUsageExtensionMessage.class,
-					new KeyUsageTypeAdapter());
-		}
+	class ExtendedKeyUsageTypeAdapter extends TypeAdapter<ExtendedKeyUsageExtensionMessage> {
 
 		@Override
 		public void write(JsonWriter out, ExtendedKeyUsageExtensionMessage value) throws IOException {
