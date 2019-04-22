@@ -1,7 +1,7 @@
 package io.tomahawkd.censys.module.searching;
 
-import io.tomahawkd.censys.module.ipv4.IpSearchResultMessage;
+import io.tomahawkd.censys.module.ipv4.IpMessage;
 
-public class IpSearchMessage extends SearchMessage<IpSearchResultMessage> {
+public class IpSearchMessage extends SearchMessage<IpMessage> {
 
 }
