@@ -19,8 +19,7 @@ public class CertSearchApi extends AbstractSearchApi {
 		String url = constructURL("search", CENSYS_INDEX_CERT);
 		try {
 			return postForClass(CertSearchMessage.class,
-					url, accountService.getToken(),
-					null, new SearchQueryMessage(query, page, fields).buildJson());
+					url, accountService.getToken(), new SearchQueryMessage(query, page, fields).buildJson());
 		} catch (IOException e) {
 			return null;
 		}

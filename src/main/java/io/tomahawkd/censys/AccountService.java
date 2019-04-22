@@ -31,7 +31,7 @@ class AccountService extends AbstractService {
 	AccountMessage status() {
 		try {
 			Response<AccountMessage> r = getForClass(AccountMessage.class,
-					constructURL(CENSYS_INDEX_ACCOUNT, ""), token, null);
+					constructURL(CENSYS_INDEX_ACCOUNT, ""), token);
 
 			// TODO handle error
 			if (r.isError()) {

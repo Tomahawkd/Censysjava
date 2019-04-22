@@ -17,16 +17,14 @@ abstract class AbstractService {
 
 	protected final <T extends Message> Response<T> getForClass(Class<T> clazz,
 	                                                            String url,
-	                                                            String token,
-	                                                            Map<String, String> param) throws IOException {
-		return Response.executeWithAuthForClass(clazz, "GET", url, token, param, "");
+	                                                            String token) throws IOException {
+		return Response.executeWithAuthForClass(clazz, "GET", url, token, "");
 	}
 
 	protected final <T extends Message> Response<T> postForClass(Class<T> clazz,
 	                                                             String url,
 	                                                             String token,
-	                                                             Map<String, String> param,
 	                                                             String content) throws IOException {
-		return Response.executeWithAuthForClass(clazz, "POST", url, token, param, content);
+		return Response.executeWithAuthForClass(clazz, "POST", url, token, content);
 	}
 }

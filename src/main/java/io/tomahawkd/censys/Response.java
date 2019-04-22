@@ -58,17 +58,9 @@ public class Response<ExpectMessage extends Message> {
 	                        String method,
 	                        String target_url,
 	                        @Nullable String token,
-	                        @Nullable Map<String, String> param,
 	                        String content) throws IOException {
 
-		StringBuilder target = new StringBuilder(target_url);
-		if (param != null) {
-			target.append("?");
-			param.forEach((k, v) -> target.append(k).append("=").append(v).append("&"));
-			target.deleteCharAt(target.length() - 1);
-		}
-
-		URL url = new URL(target.toString());
+		URL url = new URL(target_url);
 
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod(method);
