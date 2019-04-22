@@ -11,7 +11,7 @@ public abstract class AbstractMessage implements Message {
 
 	private transient GsonBuilder builder;
 
-	AbstractMessage() {
+	protected AbstractMessage() {
 		builder = register(new GsonBuilder());
 	}
 
