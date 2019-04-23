@@ -1,7 +1,7 @@
 package io.tomahawkd.censys.module.certificates;
 
 import com.google.gson.annotations.SerializedName;
-import io.tomahawkd.censys.module.certificates.ct.CTMessage;
+import io.tomahawkd.censys.module.certificates.ct.CtsMessage;
 import io.tomahawkd.censys.module.certificates.parsed.ParsedCertificateMessage;
 import io.tomahawkd.censys.module.certificates.validation.CertificateValidationMessage;
 import io.tomahawkd.censys.module.certificates.zlint.CertificateZlintMessage;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CertificateMessage extends ModuleMessage {
 
-	private CTMessage ct;
+	private CtsMessage ct;
 	@SerializedName("fingerprint_sha256")
 	private String fingerprintSHA256;
 	private CertificateMetadataMessage metadata;
@@ -24,7 +24,7 @@ public class CertificateMessage extends ModuleMessage {
 	private CertificateValidationMessage validation;
 	private CertificateZlintMessage zlint;
 
-	public CTMessage getCt() {
+	public CtsMessage getCt() {
 		return ct;
 	}
 
