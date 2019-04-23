@@ -39,7 +39,15 @@ public class Main {
 
         } else {
             ReportMessage s = r.getExpectMessage();
-            ((ExpectClass) s.getResults().get(0).getKey()).function();
+            
+            String data = s.getResults().get(0).getKey();
+            // for custom message
+            new ExpectMessage().parse(data).function();
+            // Use converter
+            new GsonBuilder().registerTypeAdapter(YourClass.class, new Converter()).create().fromJson(data, YourClass.class);
+            // Primitive value Integer for example
+            Integer.parseInt(data);
+            
             // do things you would like to do
 
         }
