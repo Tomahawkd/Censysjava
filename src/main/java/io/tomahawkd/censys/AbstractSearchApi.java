@@ -1,5 +1,7 @@
 package io.tomahawkd.censys;
 
+import io.tomahawkd.censys.module.account.AccountMessage;
+
 import java.util.List;
 
 abstract class AbstractSearchApi extends AbstractService {
@@ -30,6 +32,10 @@ abstract class AbstractSearchApi extends AbstractService {
 	// since i am not subscribing an enterprise account, have to leave it unimplemented _(:з」∠)_
 	public Response data() {
 		throw new UnsupportedOperationException("Not implement yet");
+	}
+
+	public AccountMessage status() {
+		return accountService.status();
 	}
 
 }
