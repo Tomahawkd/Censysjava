@@ -29,7 +29,7 @@ public class AccountService extends AbstractService {
 		return new AccountService(tokenEncoded);
 	}
 
-	public AccountMessage status() {
+	public AccountMessage status() throws CensysException {
 		try {
 			Response<AccountMessage> r = getForClass(AccountMessage.class,
 					constructURL(CENSYS_INDEX_ACCOUNT, ""), token);
