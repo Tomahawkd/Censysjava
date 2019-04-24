@@ -1,5 +1,6 @@
 package io.tomahawkd.censys;
 
+import io.tomahawkd.censys.exception.CensysException;
 import io.tomahawkd.censys.module.account.AccountMessage;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,16 +34,9 @@ public class AccountService extends AbstractService {
 			Response<AccountMessage> r = getForClass(AccountMessage.class,
 					constructURL(CENSYS_INDEX_ACCOUNT, ""), token);
 
-			// TODO handle error
-			if (r.isError()) {
-				System.out.println(r.getErrorMessage());
-				throw new IllegalStateException(r.getContentMessage());
-			} else {
-				return r.getExpectMessage();
-			}
+			return wrapMessage(r);
 		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
+			throw new CensysException(e.getCause());
 		}
 	}
 

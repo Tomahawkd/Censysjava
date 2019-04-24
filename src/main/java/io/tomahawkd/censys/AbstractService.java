@@ -1,9 +1,9 @@
 package io.tomahawkd.censys;
 
+import io.tomahawkd.censys.exception.CensysException;
 import io.tomahawkd.censys.module.Message;
 
 import java.io.IOException;
-import java.util.Map;
 
 abstract class AbstractService {
 
@@ -26,5 +26,11 @@ abstract class AbstractService {
 	                                                             String token,
 	                                                             String content) throws IOException {
 		return Response.executeWithAuthForClass(clazz, "POST", url, token, content);
+	}
+
+	protected <T extends Message> T wrapMessage(Response<T> response) throws CensysException {
+
+		if (response.isError()) throw new CensysException(response.getErrorMessage());
+		else return response.getExpectMessage();
 	}
 }

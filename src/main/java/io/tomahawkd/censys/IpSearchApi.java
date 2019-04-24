@@ -1,7 +1,8 @@
 package io.tomahawkd.censys;
 
+import io.tomahawkd.censys.exception.CensysException;
+import io.tomahawkd.censys.module.Message;
 import io.tomahawkd.censys.module.reporting.ReportMessage;
-import io.tomahawkd.censys.module.reporting.ReportQueryMessage;
 import io.tomahawkd.censys.module.searching.IpSearchMessage;
 import io.tomahawkd.censys.module.searching.SearchQueryMessage;
 import org.jetbrains.annotations.Nullable;
@@ -22,11 +23,13 @@ public class IpSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	public Response<IpSearchMessage> search(String query, int page, List<String> fields) {
+	public IpSearchMessage search(String query, int page, List<String> fields) throws CensysException {
 		String url = constructURL("search", CENSYS_INDEX_IP);
 		try {
-			return postForClass(IpSearchMessage.class,
+			Response<IpSearchMessage> response = postForClass(IpSearchMessage.class,
 					url, accountService.getToken(), new SearchQueryMessage(query, page, fields).buildJson());
+
+			return wrapMessage(response);
 		} catch (IOException e) {
 			return null;
 		}
@@ -34,7 +37,7 @@ public class IpSearchApi extends AbstractSearchApi {
 
 	@Override
 	@Nullable
-	public Response view(String id) {
+	public Message view(String id) throws CensysException {
 		checkId(id);
 
 		String url = constructURL("view", CENSYS_INDEX_IP) + "/" + id;
@@ -49,14 +52,9 @@ public class IpSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	public Response<ReportMessage> report(String query, String field, int buckets) {
+	public ReportMessage report(String query, String field, int buckets) throws CensysException {
 		String url = constructURL("report", CENSYS_INDEX_IP);
-		try {
-			return postForClass(ReportMessage.class,
-					url, accountService.getToken(), new ReportQueryMessage(query, field, buckets).buildJson());
-		} catch (IOException e) {
-			return null;
-		}
+		return report(url, query, field, buckets);
 	}
 
 	private void checkId(String id) {

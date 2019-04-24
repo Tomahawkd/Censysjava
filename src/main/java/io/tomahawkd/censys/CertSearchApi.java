@@ -1,5 +1,6 @@
 package io.tomahawkd.censys;
 
+import io.tomahawkd.censys.exception.CensysException;
 import io.tomahawkd.censys.module.certificates.CertificateMessage;
 import io.tomahawkd.censys.module.reporting.ReportMessage;
 import io.tomahawkd.censys.module.reporting.ReportQueryMessage;
@@ -22,35 +23,35 @@ public class CertSearchApi extends AbstractSearchApi {
 	}
 
 	@Override
-	public Response<CertSearchMessage> search(String query, int page, List<String> fields) {
+	public CertSearchMessage search(String query, int page, List<String> fields) throws CensysException {
 		String url = constructURL("search", CENSYS_INDEX_CERT);
 		try {
-			return postForClass(CertSearchMessage.class,
+			Response<CertSearchMessage> response = postForClass(CertSearchMessage.class,
 					url, accountService.getToken(), new SearchQueryMessage(query, page, fields).buildJson());
+
+			return wrapMessage(response);
 		} catch (IOException e) {
 			return null;
 		}
 	}
 
 	@Override
-	public Response<CertificateMessage> view(String hash) {
+	public CertificateMessage view(String hash) throws CensysException {
 		String url = constructURL("view", CENSYS_INDEX_CERT) + "/" + hash;
 		try {
-			return getForClass(CertificateMessage.class, url, accountService.getToken());
+			Response<CertificateMessage> response =
+					getForClass(CertificateMessage.class, url, accountService.getToken());
+
+			return wrapMessage(response);
 		} catch (IOException e) {
 			return null;
 		}
 	}
 
 	@Override
-	public Response<ReportMessage> report(String query, String field, int buckets) {
+	public ReportMessage report(String query, String field, int buckets) throws CensysException {
 		String url = constructURL("report", CENSYS_INDEX_CERT);
-		try {
-			return postForClass(ReportMessage.class,
-					url, accountService.getToken(), new ReportQueryMessage(query, field, buckets).buildJson());
-		} catch (IOException e) {
-			return null;
-		}
+		return report(url, query, field, buckets);
 	}
 
 }
