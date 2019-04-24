@@ -17,6 +17,10 @@ public class IpSearchApi extends AbstractSearchApi {
 		super(uid, secret);
 	}
 
+	public IpSearchApi(AccountService accountService) {
+		super(accountService);
+	}
+
 	@Override
 	public Response<IpSearchMessage> search(String query, int page, List<String> fields) {
 		String url = constructURL("search", CENSYS_INDEX_IP);

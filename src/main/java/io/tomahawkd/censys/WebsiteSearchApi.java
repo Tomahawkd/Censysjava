@@ -16,6 +16,10 @@ public class WebsiteSearchApi extends AbstractSearchApi {
 		super(uid, secret);
 	}
 
+	public WebsiteSearchApi(AccountService accountService) {
+		super(accountService);
+	}
+
 	@Override
 	public Response<WebsiteSearchMessage> search(String query, int page, List<String> fields) {
 		String url = constructURL("search", CENSYS_INDEX_WEBSITE);

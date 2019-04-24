@@ -17,6 +17,10 @@ public class CertSearchApi extends AbstractSearchApi {
 		super(uid, secret);
 	}
 
+	public CertSearchApi(AccountService accountService) {
+		super(accountService);
+	}
+
 	@Override
 	public Response<CertSearchMessage> search(String query, int page, List<String> fields) {
 		String url = constructURL("search", CENSYS_INDEX_CERT);
