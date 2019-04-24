@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-class AccountService extends AbstractService {
+public class AccountService extends AbstractService {
 
 	private static final String CENSYS_INDEX_ACCOUNT = "account";
 
