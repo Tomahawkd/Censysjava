@@ -4,7 +4,7 @@ import io.tomahawkd.censys.module.AbstractMessage;
 
 import java.util.List;
 
-public class ReportMessage<KeyType> extends AbstractMessage {
+public class ReportMessage extends AbstractMessage {
 
 	private String status;
 	private List<ReportResultMessage> results;
