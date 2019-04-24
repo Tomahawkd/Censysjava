@@ -10,14 +10,13 @@ Basically the api usage is as follows.
 public class Main {
     public static void main(String[] args){
         IpSearchApi api = new IpSearchApi("uid", "secret");
-        Response<SearchMessage> r = api.search("query", 1, null);
-        if (r.isError()) {
-        	ErrorMessage err = r.getErrorMessage();
-        	// do things you would like to do
-
-        } else {
-            SearchMessage s = r.getExpectMessage();
+        try {
+            SearchMessage m = api.search("query", 1, null);
             // do things you would like to do
+
+        } catch (CensysException e) {
+        	ErrorMessage err = e.getErrorMessage();
+        	// do things you would like to do
 
         }
     }
@@ -32,24 +31,22 @@ to get keys from response you need to cast it yourself.
 public class Main {
     public static void main(String[] args){
         IpSearchApi api = new IpSearchApi("uid", "secret");
-        Response<ReportMessage> r = api.report("query", "field", 10);
-        if (r.isError()) {
-        	ErrorMessage err = r.getErrorMessage();
-        	// do things you would like to do
-
-        } else {
-            ReportMessage s = r.getExpectMessage();
-            
+        try {
+            ReportMessage r = api.report("query", "field", 10);
             String data = s.getResults().get(0).getKey();
+                        
             // for custom message
             new ExpectMessage().parse(data).function();
             // Use converter
             new GsonBuilder().registerTypeAdapter(YourClass.class, new Converter()).create().fromJson(data, YourClass.class);
             // Primitive value Integer for example
             Integer.parseInt(data);
-            
+                        
             // do things you would like to do
-
+            
+        } catch (CensysException e) {
+        	ErrorMessage err = e.getErrorMessage();
+            // do things you would like to do
         }
     }
 }
