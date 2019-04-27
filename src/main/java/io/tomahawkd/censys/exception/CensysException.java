@@ -19,7 +19,7 @@ public class CensysException extends RuntimeException {
 	}
 
 	public CensysException(ErrorMessage errorMessage) {
-		super();
+		super(errorMessage.getMessage());
 		this.errorMessage = errorMessage;
 	}
 
@@ -27,8 +27,4 @@ public class CensysException extends RuntimeException {
 		return errorMessage;
 	}
 
-	@Override
-	public String getMessage() {
-		return errorMessage.getMessage();
-	}
 }
