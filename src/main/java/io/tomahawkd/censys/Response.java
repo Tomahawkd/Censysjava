@@ -66,6 +66,7 @@ public class Response<ExpectMessage extends Message> {
 		HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 		conn.setRequestMethod(method);
 
+		conn.addRequestProperty("User-Agent", "python-requests/2.22.0");
 		if (token != null) {
 			conn.addRequestProperty("Authorization", "Basic " + token);
 		}
